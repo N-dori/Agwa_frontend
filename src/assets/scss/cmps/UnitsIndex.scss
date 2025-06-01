@@ -1,0 +1,28 @@
+.units-container {
+    grid-column: 2;
+    .units-wrapper{
+        gap:2rem;
+        .unit-container {
+            .unit-panel {
+                grid-template-columns: repeat(6,1fr);
+                background-color: var(--clr1);
+                padding: 1rem;
+                border-radius: 4px;
+                .trays-container {
+                    max-width: 150px;
+                    gap:.7rem;
+                    .tray{
+                        height: 4px;
+                        // border: 2px solid var(--clr0);
+                        background: var(--clr4);
+                        border-radius: 8px;
+                    }
+                    .tray.bold{
+                         height: 10px;
+                         
+                    }
+                }
+            }
+        }
+    }
+}

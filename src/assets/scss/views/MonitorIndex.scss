@@ -4,6 +4,7 @@
   min-height: 800px;
   border: 1em solid #222222;
   border-radius: 8px;
+  grid-template-columns: minmax(10px, 2em) 1fr minmax(10px, 2em);
   background: linear-gradient(
     #9c4fb2 0%,
     #d45bc7 10%,
@@ -12,6 +13,7 @@
   );
 
   .monitor-title {
+    grid-column: 2;
     color: #ffffff;
   }
 }

@@ -70,7 +70,7 @@ const createUnit = () => {
 
 const createUnits = () => {
     const units = Array(TRAYS_NUMBER).fill(null).map(_ => createUnit())
-    return [ units ]
+    return  units 
 }
 
 export const monitorService = {

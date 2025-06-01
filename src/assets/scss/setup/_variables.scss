@@ -1,25 +1,12 @@
 
 // Colors
-$clr1: #222222;
-$clr2: #6a00f4;
-$clr3: #9d4edd;
-// $clr4: #95adbe;
-// $clr5: #dff0ea;
-// $clr6: #fff;
-// $clr8: #222;
-// $clr9: #717171;
-// $clr10: #000000;
-// $clr11:#F7F7F7;
-// $clr12: #222222;
-// $clr13: #e7e2e2;
-// $clr14: #ebebeb;
-// $clr15: #1b1b1b57;
-// $clr16: #DDDDDD;
-// $clr17: #969393;
-// $clr18:#717171;
-// $clr19:#e3e3e3;
-
-
+:root {
+  --clr0: #fff;
+  --clr1: #222222;
+  --clr2: #6a00f4;
+  --clr3: #9d4edd;
+  --clr4: #78c49b;
+}
 
 $mobile-breakpoint: 500px;
 
