@@ -1,0 +1,17 @@
+.monitor-container {
+  grid-column: 2;
+  width: 100%;
+  min-height: 800px;
+  border: 1em solid #222222;
+  border-radius: 8px;
+  background: linear-gradient(
+    #9c4fb2 0%,
+    #d45bc7 10%,
+    #fdd4f1 20%,
+    #e4bbfb 100%
+  );
+
+  .monitor-title {
+    color: #ffffff;
+  }
+}
