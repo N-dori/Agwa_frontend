@@ -10,17 +10,23 @@ type Props = {}
 export default function MonitorIndex({}: Props) {
   const [isModalShown, setIsModalShown] = useState<boolean>(true)
   const [modalType, setModalType] = useState<string>(modalTypes.INTRO)
-  const [modalBtnTxt, setBtnTxt] = useState<string>('Start Technical Exercise')
+  const [modalBtnTxt, setBtnTxt] = useState<string>('Start Technical Exercise') // put in side modal
+  const [selectedUnit, setSelectedUnit] = useState<string>('') 
+
 
   const initialData :Unit [] = monitorService.getInitialData()
   console.log({initialData});
-  
+  const unitIndexProps = {
+    units: initialData,
+    setSelectedUnit,
+    selectedUnit
+  } 
   
   return (
     <section className="monitor-container grid">
       <h1 className="monitor-title center"> ~HydroSense Monitor~ </h1>
       <section className="units-container"> 
-        <UnitsIndex units={initialData}/>
+        <UnitsIndex {...unitIndexProps} />
       </section>
       {isModalShown && 
         <>

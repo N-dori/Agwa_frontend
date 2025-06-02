@@ -1,0 +1,1 @@
+export const MAX_PODS_NUMBER = 20

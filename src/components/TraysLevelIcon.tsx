@@ -4,7 +4,7 @@ type TraysIconProps = {
     idx: number
 }
 
-export const TraysIcon = ({idx}: TraysIconProps) => {
+export const TraysLevelIcon = ({idx}: TraysIconProps) => {
   return (
     <section className="trays-container flex-col">
         <div className={`tray ${idx === 0 ? 'bold' : '' }`}></div>

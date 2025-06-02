@@ -1,0 +1,7 @@
+.pods-container {
+    justify-items: center;
+    .pods-wrapper {
+        grid-template-columns: repeat(5,1fr) ;
+        grid-template-rows: repeat(5,1fr) ;
+    }
+}
