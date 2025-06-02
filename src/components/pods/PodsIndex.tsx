@@ -12,8 +12,8 @@ export const PodsIndex = ({pods, unitId}: PodsIndexProps) => {
     <section className="pods-container flex-col" >
 
         <div className="input-container flex-jc-ac ">
-        <input className="unit-input" type="text" value={'Unit - '+unitId} readOnly/>
-        <button className="inspect-btn">Inspect</button>
+          <input className="unit-input" type="text" value={'Unit - '+unitId} readOnly/>
+          <button type='button' className="inspect-btn">Inspect</button>
         </div>
 
         <PodsList pods={pods}/>

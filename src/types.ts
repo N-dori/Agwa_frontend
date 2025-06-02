@@ -5,13 +5,17 @@ export type Unit = {
 
 export type Pod = {
     id: string
-    readings: reading[]
+    readings: Reading[]
     age : number
-    timestamp : Date
+    timestamp : string
+    classification?:string | undefined
+    status?:string | undefined
 }
 
-export type reading = {
+export type Reading = {
     id: string
-    readings: { pH: number, temp: number, ec: number }
+    pH: number, 
+    temp: number,
+    ec: number 
 
 }

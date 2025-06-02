@@ -1,8 +1,9 @@
+import type { Pod, Reading } from "../types"
 import { localStorageService } from "./localStorage.service"
 import { utilService } from "./util.service"
 
-const MIN_PH = 1
-const MAX_PH = 10
+const MIN_PH = 5
+const MAX_PH = 6.5
 const MIN_TEMP = 1
 const MAX_TEMP = 41
 const MIN_EC = 1
@@ -42,21 +43,23 @@ const createRandomAge = () => {
     return utilService.getRandomIntInclusive(MIN_AGE, MAX_AGE)
 }
 
-const createReading = () => {
-    return  { pH: createRandomPh(), temp: createRandomTemp(), ec: createRandomEc() } 
+const createReading = (): Reading => {
+    return  {id:utilService.makeId(), pH: createRandomPh(), temp: createRandomTemp(), ec: createRandomEc() } 
 }
 
-const createReadings = () => {
+const createReadings = () : Reading[]=> {
     const readings = Array(READINGS_AMOUNT).fill(null).map(_ => createReading())
     return  readings 
 }
 
-const createPod = () => {
+const createPod = (): Pod  => {
     return {
         id: utilService.makeId(8),
         readings : createReadings(),
         age: createRandomAge(),
-        timestamp: utilService.randomPastTime()
+        timestamp: utilService.randomPastTime(),
+        status:undefined,
+        classification:undefined,
     }
 }
 
@@ -71,15 +74,18 @@ const createUnit = () => {
 const createUnits = () => {
     const units = Array(TRAYS_NUMBER).fill(null).map(_ => createUnit())
     units.forEach(unit => {
-       unit.pods.map(pod => {
+       unit.pods.forEach(pod => {
          const lastReading = pod.readings[pod.readings.length-1]
-         const {pH} = lastReading
-         if(pH < 5.5 || pH > 7 ){
-            return { "status": "OK", "classification": "Healthy" } 
-         } else {
-           return  { "status": "OK", "classification": "Needs Attention" } 
-         }
-       })
+         
+         const { pH } = lastReading
+         if (pH < 5.5 || pH > 7 ) {
+           pod.status = 'OK';
+           pod.classification = "Needs Attention";
+            } else {
+           pod.status = 'OK';
+           pod.classification = "Healthy";
+            }
+        })
     })
     return  units 
 }
