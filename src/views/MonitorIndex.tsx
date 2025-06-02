@@ -15,6 +15,7 @@ export default function MonitorIndex({}: Props) {
 
 
   const initialData :Unit [] = monitorService.getInitialData()
+  
   console.log({initialData});
   const unitIndexProps = {
     units: initialData,

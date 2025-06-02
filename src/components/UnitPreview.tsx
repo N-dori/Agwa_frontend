@@ -26,7 +26,7 @@ export const UnitPreview = ({unit, idx, setSelectedUnit, selectedUnit}: UnitPrev
     </article>
 
      {selectedUnit === unit.id &&
-     <PodsIndex pods={unit.pods}/> } 
+     <PodsIndex pods={unit.pods} unitId={unit.id}/> } 
          
     </>
   )

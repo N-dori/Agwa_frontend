@@ -18,7 +18,7 @@ const UNITS_STORAGE_KEY = 'units'
 
 const getInitialData = () => {
     const units = localStorageService.load(UNITS_STORAGE_KEY)
-        if(!units || units.length<1) {
+        if(!units || units.length < 1) {
             const units = createUnits()
             localStorageService.store(UNITS_STORAGE_KEY,units)
             return units
@@ -70,6 +70,17 @@ const createUnit = () => {
 
 const createUnits = () => {
     const units = Array(TRAYS_NUMBER).fill(null).map(_ => createUnit())
+    units.forEach(unit => {
+       unit.pods.map(pod => {
+         const lastReading = pod.readings[pod.readings.length-1]
+         const {pH} = lastReading
+         if(pH < 5.5 || pH > 7 ){
+            return { "status": "OK", "classification": "Healthy" } 
+         } else {
+           return  { "status": "OK", "classification": "Needs Attention" } 
+         }
+       })
+    })
     return  units 
 }
 

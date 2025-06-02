@@ -1,7 +1,50 @@
 .pods-container {
     justify-items: center;
+    background: #222222c7;
+    padding-block: 1rem;
+    .input-container {
+                position: relative;
+                padding-block: 2em;
+
+                .inspect-btn, .unit-input {
+                    min-height: 2.5rem;
+                    padding-inline: .5rem;
+                    border: 3px solid var(--clr4);
+                    border-radius: 8px;
+                    font-size: 1rem;
+                }
+                .unit-input {
+                    font-weight: 500;
+                    width: 14em;
+                }
+                .inspect-btn {
+                    position: relative;
+                    left: -60px;
+                    background: var(--clr1);
+                    color: var(--clr0);
+                    opacity: .9;
+                }
+            } 
     .pods-wrapper {
-        grid-template-columns: repeat(5,1fr) ;
-        grid-template-rows: repeat(5,1fr) ;
+        grid-template-columns: repeat(5,1fr);
+        grid-template-rows: repeat(5,1fr);
+        row-gap: .5em;
+        padding-block: 2em;
+        margin-top: -3.5rem;
+
+        .row-name, .pod-container {
+            justify-self: center;
+        }
+
+        .row-name {
+            align-self: end;
+            color: var(--clr0);
+        }
+
+        .pod-container{
+            border: 2px solid var(--clr4);
+            border-radius: 50%;
+            padding: 0.5em; 
+        }
     }
 }

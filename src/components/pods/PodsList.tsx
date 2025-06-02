@@ -11,9 +11,9 @@ export const PodsList = ({pods}:PodsListProps) => {
 const podsNames = ['Lettuce','Arugula','Basil','Parsley','Mix',]
 
   return (
-    <ul className="pods-wrapper grid">
+    <section className="pods-wrapper  grid">
         {podsNames.map((name) => <div className="row-name">{name}</div>)}
-        {pods.map((pod, idx) => <PodPreview pod={pod} idx={idx}></PodPreview>)}
-    </ul>
+        {pods.map((pod) => <PodPreview pod={pod}/>)}
+    </section>
   )
 }

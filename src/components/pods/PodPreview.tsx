@@ -1,13 +1,13 @@
 import React from 'react'
 import type { Pod } from '../../types'
+import { GreenLeafs } from '../../assets/svgs/GreenLeafs'
 
 type Props = {
     pod: Pod
-    idx: number
 }
 
-export const PodPreview = ({pod,idx}: Props) => {
+export const PodPreview = ({pod}: Props) => {
   return (
-    <div className={`pod-container pod-${idx}`}>Pod</div>
+    <div className="pod-container"><GreenLeafs/></div>
   )
 }
