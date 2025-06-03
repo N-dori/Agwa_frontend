@@ -12,8 +12,17 @@
     #e4bbfb 100%
   );
 
-  .monitor-title {
+  .monitor-title,
+  .monitor-subtitle {
     grid-column: 2;
-    color: #ffffff;
+    
+  }
+  .monitor-title {
+    color: var(--clr0);
+  }
+  
+  .monitor-subtitle {
+    color: var(--clr1);
+    
   }
 }

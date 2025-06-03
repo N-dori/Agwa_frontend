@@ -27,8 +27,8 @@ export const Modal = ({type, btnTxt, setIsModalShown, problematicReadings, selec
       <button className="modal-btn center" onClick={() => setIsModalShown(false)}>{btnTxt}</button>
     </section>
     :
-    <section className="modal-container">
-      <ProblematicReadingsTable problematicReadings={problematicReadings} selectedUnit={selectedUnit}/>
+    <section className="modal-container inspect">
+      <ProblematicReadingsTable problematicReadings={problematicReadings} selectedUnit={selectedUnit} setIsModalShown={setIsModalShown}/>
     </section>
   )
 }

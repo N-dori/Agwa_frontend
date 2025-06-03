@@ -43,6 +43,9 @@ const modalProps = {
   return (
     <section className="monitor-container grid">
       <h1 className="monitor-title center"> ~HydroSense Monitor~ </h1>
+      <h2 className="monitor-subtitle center">Healthy Plants, Happy Growers</h2>
+      <h3 className="monitor-subtitle center">60 plants per pod — inspect any tray to check their status</h3>
+
       <section className="units-container"> 
         <UnitsIndex {...unitIndexProps} />
       </section>

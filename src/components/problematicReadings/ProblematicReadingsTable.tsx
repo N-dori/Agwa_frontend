@@ -9,10 +9,11 @@ import { ProblematicReadingsList } from './problematicReadingsList'
 type ProblematicReadingsTableProps = {
   problematicReadings: ProblematicReading[]
   selectedUnit: string
+  setIsModalShown: (isModalShown:boolean) => void
 }
 
-export const ProblematicReadingsTable =({problematicReadings, selectedUnit}: ProblematicReadingsTableProps) => {
-  const tableHead = ['#',<PhSvg/>,<TempSvg/>,<EcSvg/>, <DateSvg/>].map(item => <div className="head-item flex-jc-ac">{item}</div>) 
+export const ProblematicReadingsTable =({problematicReadings, selectedUnit, setIsModalShown}: ProblematicReadingsTableProps) => {
+  const tableHead = [<span className="num">#</span>,<PhSvg/>,<TempSvg/>,<EcSvg/>, <DateSvg/>].map(item => <div className="head-item flex-jc-ac">{item}</div>) 
   
   return (
         <section className="problematic-readings-container flex-col flex-ac">
@@ -23,10 +24,10 @@ export const ProblematicReadingsTable =({problematicReadings, selectedUnit}: Pro
 
           <div className="problematic-readings-table grid">
             {tableHead.map((item) => item)}
-            <ProblematicReadingsList problematicReadings={problematicReadings}/>
+            <ProblematicReadingsList problematicReadings={problematicReadings} />
           </div>
 
-          <button className="modal-btn center" onClick={()=>{}}>Back</button>
+          <button className="modal-btn center" onClick={() => setIsModalShown(false)}>Back</button>
         </section>
   )
 }
