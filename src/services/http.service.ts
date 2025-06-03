@@ -1,33 +1,28 @@
-// בס"ד
 
 import Axios from 'axios'
 // import { router } from '@/router'
 
-const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/api/'
-    : '//localhost:3030/api/'
+const BASE_URL = '//localhost:8000/api/'
 
 
-const axios = Axios.create({
-    withCredentials: true
-})
+const axios = Axios.create()
 
 export const httpService = {
-    get(endpoint, data) {
+    get(endpoint:string, data:any) {
         return ajax(endpoint, 'GET', data)
     },
-    post(endpoint, data) {
+    post(endpoint:string, data:any) {
         return ajax(endpoint, 'POST', data)
     },
-    put(endpoint, data) {
+    put(endpoint:string, data:any) {
         return ajax(endpoint, 'PUT', data)
     },
-    delete(endpoint, data) {
+    delete(endpoint:string, data:any) {
         return ajax(endpoint, 'DELETE', data)
     }
 }
 
-async function ajax(endpoint, method = 'GET', data = null) {
+async function ajax(endpoint:string, method = 'GET', data = null) {
     try {
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
@@ -37,7 +32,7 @@ async function ajax(endpoint, method = 'GET', data = null) {
         })
         console.log(`sending ${method}ing to the backend, endpoint: ${endpoint}, with data:`, data)
         return res.data
-    } catch (err) {
+    } catch (err:any) {
         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`, data)
         console.dir(err)
         if (err.response && err.response.status === 401) {

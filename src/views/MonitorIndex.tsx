@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from '../components/Modal'
 import { modalTypes } from '../utils/modal'
 import { monitorService } from '../services/monitorLocalService'
 import type { ProblematicReading, Unit } from '../types'
 import { UnitsIndex } from '../components/units/UnitsIndex'
+import { pyMonitorService } from '../services/monitorService'
 
 type Props = {}
 
 export default function MonitorIndex({}: Props) {
+const [units, setUnits] = useState<Unit[]>([]);
 const [isModalShown, setIsModalShown] = useState<boolean>(true)
 const [modalType, setModalType] = useState<string>(modalTypes.INTRO)
 const [modalBtnTxt, setBtnTxt] = useState<string>('Start Technical Exercise') // put in side modal
@@ -15,21 +17,30 @@ const [selectedUnit, setSelectedUnit] = useState<string>('')
 const [problematicReadings, setProblematicReadings] = useState<ProblematicReading[]>([]) 
 
 
-const initialData :Unit [] = monitorService.getInitialData()
+useEffect(() => {
+  fetchUnits();
+}, []);
 
-const onInspectUnit = () => {
-  setModalType(modalTypes.INSPECT)
-  setBtnTxt('Back')
-  setIsModalShown(true)
-  const problematicReadings = monitorService.getUnitProblematicReadings(selectedUnit)
-  setProblematicReadings(problematicReadings)
+const fetchUnits = async () => {
+  const initialData =  pyMonitorService.getInitialSensorData();
+  const classifiedData = await pyMonitorService.sendSensorData(initialData);
+  setUnits(classifiedData);
+}
+
+const onInspectUnit = async () => {
+setModalType(modalTypes.INSPECT)
+setBtnTxt('Back')
+setIsModalShown(true)
+// const problematicReadings = monitorService.getUnitProblematicReadings(selectedUnit)
+const problematicReadings = await pyMonitorService.getAlerts(selectedUnit)
+setProblematicReadings(problematicReadings)
 }
 
 const unitIndexProps = {
-  units: initialData,
-  setSelectedUnit,
-  selectedUnit,
-  onInspectUnit
+units,
+setSelectedUnit,
+selectedUnit,
+onInspectUnit
 } 
 
 const modalProps = {
