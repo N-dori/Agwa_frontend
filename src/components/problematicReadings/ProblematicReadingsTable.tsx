@@ -27,7 +27,7 @@ export const ProblematicReadingsTable =({problematicReadings, selectedUnit, setI
             <ProblematicReadingsList problematicReadings={problematicReadings} />
           </div>
 
-          <button className="modal-btn center" onClick={() => setIsModalShown(false)}>Back</button>
+          <button className="btn center" onClick={() => setIsModalShown(false)}>Back</button>
         </section>
   )
 }

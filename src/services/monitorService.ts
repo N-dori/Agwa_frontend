@@ -26,7 +26,14 @@ const getInitialSensorData = () => {
             return units
         }
     return units
-}  
+}
+
+const getRandomSensorData = async () => {
+    const sensorData = createUnits()
+        const res = await httpService.post('sensor', sensorData)
+        console.log('Server response:', res)
+        return res
+}
 
 const createRandomPh = () => {
     return utilService.getRandomFloatInclusive(MIN_PH, MAX_PH)
@@ -126,5 +133,6 @@ export const pyMonitorService = {
 getInitialSensorData,
 getUnitProblematicReadings,
 sendSensorData,
-getAlerts
+getAlerts,
+getRandomSensorData,
 }

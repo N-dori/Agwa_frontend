@@ -24,7 +24,7 @@ export const Modal = ({type, btnTxt, setIsModalShown, problematicReadings, selec
         <li>As a yoga practitioner and a father, I deeply resonate with the philosophy that when we provide our bodies with the right conditions — proper nutrition, sleep, and movement — we unlock our full potential. In that same spirit, I find it inspiring that your technology can deliver fresh hydroponic produce to crews in remote locations like gas rigs and vessels, improving their well-being and overall morale. It’s a beautiful, smart solution, and I would be honored to contribute to such a meaningful project.</li>
         <li>If accepted, I’m eager to grow, learn, solve problems, deliver real value, and help the company succeed in any challenge it faces.</li>
       </ul>
-      <button className="modal-btn center" onClick={() => setIsModalShown(false)}>{btnTxt}</button>
+      <button className="btn center" onClick={() => setIsModalShown(false)}>{btnTxt}</button>
     </section>
     :
     <section className="modal-container inspect">
