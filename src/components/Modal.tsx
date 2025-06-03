@@ -1,13 +1,18 @@
 import React from 'react'
 import { modalTypes } from '../utils/modal'
+import type { ProblematicReading } from '../types'
+import { ProblematicReadingsTable } from './problematicReadings/ProblematicReadingsTable'
 
 type Props = {
-    type:string
-    btnTxt:string
+    type: string
+    btnTxt: string
     setIsModalShown: (isModalShown:boolean) => void 
+    problematicReadings: ProblematicReading []
+    selectedUnit: string
 }
 
-export const Modal = ({type, btnTxt, setIsModalShown}: Props) => {
+export const Modal = ({type, btnTxt, setIsModalShown, problematicReadings, selectedUnit}: Props) => {
+
   return (
    type === modalTypes.INTRO ? 
     <section className="modal-container center">
@@ -22,6 +27,8 @@ export const Modal = ({type, btnTxt, setIsModalShown}: Props) => {
       <button className="modal-btn center" onClick={() => setIsModalShown(false)}>{btnTxt}</button>
     </section>
     :
-    <section>inspect</section>
+    <section className="modal-container">
+      <ProblematicReadingsTable problematicReadings={problematicReadings} selectedUnit={selectedUnit}/>
+    </section>
   )
 }

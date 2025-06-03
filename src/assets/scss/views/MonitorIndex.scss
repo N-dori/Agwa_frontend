@@ -1,7 +1,7 @@
 .monitor-container {
-  grid-column: 2;
+  grid-column: 1/-1;
   width: 100%;
-  min-height: 800px;
+  min-height: 90vh;
   border: 1em solid #222222;
   border-radius: 8px;
   grid-template-columns: minmax(10px, 2em) 1fr minmax(10px, 2em);

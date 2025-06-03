@@ -6,7 +6,8 @@
     .input-container {
                 position: relative;
                 padding-block: 2em;
-
+                transform: translate(5%);
+                
                 .inspect-btn, .unit-input {
                     min-height: 2.5rem;
                     padding-inline: .5rem;

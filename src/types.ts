@@ -14,8 +14,14 @@ export type Pod = {
 
 export type Reading = {
     id: string
-    pH: number, 
-    temp: number,
+    pH: number
+    temp: number
     ec: number 
 
+}
+
+export type ProblematicReading = {
+    podId: string
+    timestamp: string
+    readings: Reading
 }

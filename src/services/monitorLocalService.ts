@@ -1,4 +1,4 @@
-import type { Pod, Reading } from "../types"
+import type { Pod, ProblematicReading, Reading, Unit } from "../types"
 import { localStorageService } from "./localStorage.service"
 import { utilService } from "./util.service"
 
@@ -71,14 +71,17 @@ const createUnit = () => {
     }
 }
 
+const validateReading = (reading:Reading) => {
+   return  (reading.pH < 5.5 || reading.pH > 7) ? false : true
+}
+
 const createUnits = () => {
     const units = Array(TRAYS_NUMBER).fill(null).map(_ => createUnit())
     units.forEach(unit => {
        unit.pods.forEach(pod => {
-         const lastReading = pod.readings[pod.readings.length-1]
-         
-         const { pH } = lastReading
-         if (pH < 5.5 || pH > 7 ) {
+         const lastReading = pod.readings[pod.readings.length-1]    
+         const res = validateReading(lastReading)
+         if (res) {
            pod.status = 'OK';
            pod.classification = "Needs Attention";
             } else {
@@ -90,6 +93,28 @@ const createUnits = () => {
     return  units 
 }
 
+const getUnitProblematicReadings = (unitId:string) => {
+
+const units: Unit[] = localStorageService.load(UNITS_STORAGE_KEY)
+const selectedUnit : Unit | undefined = units.find(unit => unit.id === unitId)
+
+const problematicReadings :any = selectedUnit?.pods.reduce<ProblematicReading[]>((acc, pod :Pod|undefined) => {
+    pod?.readings.forEach(reading => {
+        if(!validateReading(reading)){
+            acc.push({podId: pod.id, timestamp: pod.timestamp, readings:reading})
+        }
+    })
+    return acc
+},[])
+console.log({problematicReadings});
+
+const problematicReadingsSortedByDate = problematicReadings.sort(
+    (a:ProblematicReading, b:ProblematicReading) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+);
+return problematicReadingsSortedByDate.slice(0, 10);
+}
+
 export const monitorService = {
-getInitialData
+getInitialData,
+getUnitProblematicReadings,
 }
