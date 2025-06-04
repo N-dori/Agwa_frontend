@@ -2,17 +2,16 @@ import React from 'react'
 
 type Props = {
     percent: number
-    isHealthy : boolean
 }
 
-export const  ProgressCircleSvg = ({percent,isHealthy}: Props) => {
+export const  ProgressCircleSvg = ({percent}: Props) => {
 
 const size = 52
 const strokeWidth = 2;
 const radius = (size - strokeWidth) / 2;
 const circumference = 2 * Math.PI * radius;
 const offset = circumference * (1 - percent / 100);
-const progressColor = isHealthy ? 'var(--clr4)' : 'var(--clr5)';
+const progressColor = 'var(--clr4)' ;
 const trackColor = '#e0e0e0';
 
   return (

@@ -12,8 +12,8 @@ const podsNames = ['Lettuce','Arugula','Basil','Parsley','Mix',]
 
   return (
     <section className="pods-wrapper  grid">
-        {podsNames.map((name) => <div className="row-name">{name}</div>)}
-        {pods.map((pod) => <PodPreview pod={pod}/>)}
+        {podsNames.map((name,idx) => <div key={idx} className="row-name">{name}</div>)}
+        {pods.map((pod) => <PodPreview key={pod?.id} pod={pod}/>)}
     </section>
   )
 }

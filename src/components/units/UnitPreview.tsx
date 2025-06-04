@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import type { Unit } from '../../types'
-import { TraysLevelIcon } from '../TraysLevelIcon'
-import { TrayQuantity } from '../TrayQuantity'
+import { UniteLevel } from './UniteLevel'
+import { UnitQuantity } from './UnitQuantity'
 import { UnitOpenBtn } from './UnitOpenBtn'
 import { PodsIndex } from '../pods/PodsIndex'
+import { classificationsTypes } from '../../utils/monitor'
 
 type UnitPreviewProps = {
   unit : Unit 
@@ -14,22 +15,23 @@ type UnitPreviewProps = {
 }
 
 export const UnitPreview = ({unit, idx, setSelectedUnit, selectedUnit, onInspectUnit}: UnitPreviewProps) => {
-
+  if(!unit)return 
+  const isHealthy = unit?.classification?.classification === classificationsTypes.HEALTHY
   return (
     <>
-    <article className="unit-container ">
+    <article className="unit-container">
 
-      <section className="unit-panel grid"> 
-        <TraysLevelIcon idx={idx}/>
+      <section data-testid="unit-panel" className={`unit-panel ${isHealthy ? '' : 'unhealthy'} grid`}> 
+        <UniteLevel idx={idx}/>
         {selectedUnit !== unit.id && 
-        <TrayQuantity idx={idx} unitQuantity={unit?.pods?.length}/>}
-        <UnitOpenBtn unit={unit} selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit}/> 
+        <UnitQuantity idx={idx} unitQuantity={unit.pods.length}/>}
+        <UnitOpenBtn unit={unit} selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} isHealthy={isHealthy}/> 
       </section>
 
     </article>
 
      {selectedUnit === unit.id &&
-     <PodsIndex pods={unit.pods} unitId={unit.id} onInspectUnit={onInspectUnit}/>} 
+     <PodsIndex pods={unit.pods} unitId={unit.id} onInspectUnit={onInspectUnit} status={unit.classification}/>} 
          
     </>
   )

@@ -4,14 +4,19 @@
     .units-wrapper {
         gap:2rem;
         .unit-container {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5) ;
+            border-radius: 16px;
             
             .unit-panel {
                 grid-template-columns: 160px 1fr 160px;
                 border: 1px solid var(--clr1);
+                border-radius: 16px;
                 background-color: var(--clr1);
                 padding: 1rem;
-                border-radius: 4px;
-
+                &.unhealthy {
+                    border: 1px solid var(--clr5);
+                }
+                
                 .trays-container {
                     grid-column: 1;
                     max-width: 150px;
@@ -69,7 +74,13 @@
             }
             .unit-panel:hover {
                 border: 1px solid var(--clr4);
+                &.unhealthy {
+                    border: 2px solid var(--clr5);
+                }
             }
         }
     }
+}
+.custom-radio.unhealthy {
+  border: 1px solid var(--clr5) !important;
 }

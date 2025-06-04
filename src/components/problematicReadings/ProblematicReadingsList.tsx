@@ -1,14 +1,14 @@
 import React from 'react'
-import type { ProblematicReading } from '../../types'
+import type { Reading } from '../../types'
 import { ProblematicReadingPreview } from './ProblematicReadingPreview'
 
 type problematicReadingsListProps = {
-    problematicReadings :ProblematicReading []
+    problematicReadings :Reading []
 }
 
 export const ProblematicReadingsList = ({problematicReadings}: problematicReadingsListProps) => {
   return (
-    problematicReadings.map((problematicReading,idx) => 
-    <ProblematicReadingPreview problematicReading={problematicReading} idx={idx}/>)
+    problematicReadings?.map((problematicReading,idx) => 
+    <ProblematicReadingPreview key={problematicReading.id} problematicReading={problematicReading} idx={idx}/>)
   )
 }

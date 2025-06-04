@@ -1,40 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import { Modal } from '../components/Modal'
 import { modalTypes } from '../utils/modal'
-import { monitorService } from '../services/monitorLocalService'
-import type { ProblematicReading, Unit } from '../types'
+import type { Reading, Unit } from '../types'
 import { UnitsIndex } from '../components/units/UnitsIndex'
 import { pyMonitorService } from '../services/monitorService'
 import { UserMsg } from '../components/UserMsg'
+import { GreenPlant } from '../assets/svgs/GreenPlant'
+import { monitorLocalService } from '../services/monitorLocal.service'
 
 type Props = {}
 
-export default function MonitorIndex({}: Props) {
+export const  MonitorIndex = ({}: Props) => {
 const [units, setUnits] = useState<Unit[]>([]);
 const [isModalShown, setIsModalShown] = useState<boolean>(true)
 const [modalType, setModalType] = useState<string>(modalTypes.INTRO)
-const [modalBtnTxt, setBtnTxt] = useState<string>('Start Technical Exercise') // put in side modal
 const [selectedUnit, setSelectedUnit] = useState<string>('') 
-const [problematicReadings, setProblematicReadings] = useState<ProblematicReading[]>([]) 
+const [problematicReadings, setProblematicReadings] = useState<Reading[]>([]) 
 const [userMsg, setUserMsg] = useState<string>('') 
 
 
 
 useEffect(() => {
-  fetchUnits();
+  fetchUnits();  
 }, []);
 
 const fetchUnits = async () => {
-  const initialData =  pyMonitorService.getInitialSensorData();
-  const classifiedData = await pyMonitorService.sendSensorData(initialData);
-  setUnits(classifiedData);
+  // const initialUnitsData =  monitorLocalService.getInitialSensorData();
+  // const classifiedUnits = await monitorLocalService.sendSensorData(initialUnitsData)
+  
+  const initialUnitsData =  pyMonitorService.getInitialSensorData();
+  const classifiedUnits = await pyMonitorService.sendSensorData(initialUnitsData);
+  
+  setUnits(classifiedUnits);
 }
 
 const onInspectUnit = async () => {
 setModalType(modalTypes.INSPECT)
-setBtnTxt('Back')
 setIsModalShown(true)
-// const problematicReadings = monitorService.getUnitProblematicReadings(selectedUnit)
+// const problematicReadings =  await monitorLocalService.getAlertsLocal(selectedUnit)
 const problematicReadings = await pyMonitorService.getAlerts(selectedUnit)
 setProblematicReadings(problematicReadings)
 }
@@ -43,7 +46,7 @@ const onGenerateRandomReadings = async () => {
   const randomUnitsData = await pyMonitorService.getRandomSensorData();
   if(randomUnitsData) {
     setUserMsg('Random Readings Generated successfully')
-    window.scrollTo(0,0)
+    window?.scrollTo(0,0)
     setTimeout(() => {
       setUserMsg('')
     }, 6000);
@@ -60,7 +63,6 @@ onInspectUnit
 
 const modalProps = {
   type: modalType,
-  btnTxt: modalBtnTxt,
   setIsModalShown,
   problematicReadings,
   selectedUnit
@@ -68,9 +70,9 @@ const modalProps = {
  
   return (
     <section className="monitor-container grid">
-      <h1 className="monitor-title center"> ~HydroSense Monitor~ </h1>
-      <h2 className="monitor-subtitle center">Healthy Plants, Happy Growers</h2>
-      <h3 className="monitor-subtitle center">60 plants per pod — inspect any tray to check their status</h3>
+      <h1 className="monitor-title center">~HydroSense Monitor~</h1>
+      <h2 className="monitor-subtitle center">Healthy Plants, Happy Growers<GreenPlant/></h2>
+      <h3 className="monitor-subtitle center">60 plants per cabin — inspect any tray to check their status</h3>
 
       <section className="units-container flex-col flex-jc"> 
         <UnitsIndex {...unitIndexProps} />

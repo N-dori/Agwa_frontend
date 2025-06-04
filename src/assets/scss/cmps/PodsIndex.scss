@@ -6,7 +6,7 @@
     .input-container {
                 position: relative;
                 padding-block: 2em;
-                transform: translate(5%);
+                transform: translate(3%);
                 
                 .inspect-btn, .unit-input {
                     min-height: 2.5rem;
@@ -30,7 +30,18 @@
 
                 }
     } 
-
+    .unit-status {
+        background: var(--clr1);
+        color: var(--clr4);
+        padding: .5em;
+        font-weight: 600;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5) ;
+        border-radius: 4px;
+        opacity: .8;
+        &.unhealthy {
+            color: var(--clr5);
+        }
+    }
     .pods-wrapper {
         grid-template-columns: repeat(5,1fr);
         grid-template-rows: repeat(5,1fr);

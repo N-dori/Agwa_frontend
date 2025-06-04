@@ -1,4 +1,4 @@
-import MonitorIndex from './views/MonitorIndex'
+import { MonitorIndex } from './views/MonitorIndex'
 import { AppHeader } from './components/AppHeader'
 
 function App() {

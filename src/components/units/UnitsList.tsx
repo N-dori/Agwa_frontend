@@ -17,5 +17,5 @@ const UnitPreviewProps = {
   onInspectUnit,
 }
   
-  return units.map((unit, idx) => <UnitPreview key={unit.id} unit={unit} idx={idx} {...UnitPreviewProps}/>) 
+  return units?.map((unit, idx) => <UnitPreview key={unit.id} unit={unit} idx={idx} {...UnitPreviewProps}/>) 
 }

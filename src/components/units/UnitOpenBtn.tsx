@@ -1,13 +1,15 @@
 import React from 'react'
 import type { Unit } from '../../types'
+import { classificationsTypes } from '../../utils/monitor'
 
 type UnitOpenBtnProps = {
     unit: Unit
     setSelectedUnit: (id:string) => void
     selectedUnit: string
+    isHealthy: boolean
 }
 
-export const UnitOpenBtn = ({unit, selectedUnit, setSelectedUnit}: UnitOpenBtnProps) => {
+export const UnitOpenBtn = ({unit, selectedUnit, setSelectedUnit, isHealthy}: UnitOpenBtnProps) => {
   return (
     <label className="radio-wrapper flex">
               <input
@@ -17,8 +19,9 @@ export const UnitOpenBtn = ({unit, selectedUnit, setSelectedUnit}: UnitOpenBtnPr
                 value={selectedUnit}
                 onClick={() => setSelectedUnit(selectedUnit === unit?.id ? '' :unit?.id  )}
                 checked={selectedUnit === unit?.id}
+                readOnly
               />
-              <span className="custom-radio" ></span>
+              <span data-testid="custom-radio" className={`custom-radio ${isHealthy ? '' : 'unhealthy'}`}  ></span>
     </label>
   )
 }

@@ -1,12 +1,12 @@
 import React from 'react'
-import { MAX_PODS_NUMBER } from '../utils/monitor'
-import { LeafSvg } from '../assets/svgs/LeafSvg'
+import { MAX_PODS_NUMBER } from '../../utils/monitor'
+import { LeafSvg } from '../../assets/svgs/LeafSvg'
 
 type TrayQuantityProps = {
     idx:number
     unitQuantity:number
 }
-export const TrayQuantity = ({idx, unitQuantity}:TrayQuantityProps)  => {
+export const UnitQuantity = ({idx, unitQuantity}:TrayQuantityProps)  => {
 
 const getTrayPlacement = () => {
     switch (idx) {

@@ -1,15 +1,15 @@
 import React from 'react'
-import type { ProblematicReading } from '../../types'
+import type { Reading } from '../../types'
 import dayjs from 'dayjs'
 
 type ProblematicReadingPreviewProps = {
-    problematicReading: ProblematicReading
+    problematicReading: Reading
     idx: number
 }
 
 export const ProblematicReadingPreview = ({problematicReading, idx}: ProblematicReadingPreviewProps) => {
 if(!problematicReading) return
-    const { pH , temp, ec } = problematicReading.readings
+    const { pH , temp, ec } = problematicReading
     const date =  dayjs(problematicReading.timestamp).format('DD-MM-YYYY')
     return (
     <>
