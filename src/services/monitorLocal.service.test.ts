@@ -49,7 +49,7 @@ describe('monitorLocalService', () => {
             { temp: 25, pH: 6.5, ec: 2, timestamp: '', id: 'r1' }, // Valid pH
           ],
           pods: [],
-          classification: undefined,
+          validation: undefined,
         },
         {
           id: 'unit2',
@@ -57,14 +57,14 @@ describe('monitorLocalService', () => {
             { temp: 50, pH: 9, ec: 5, timestamp: '', id: 'r2' }, // Invalid pH
           ],
           pods: [],
-          classification: undefined,
+          validation: undefined,
         },
       ];
 
       const result = await monitorLocalService.sendSensorData(units);
 
-      expect(result[0].classification).toEqual({ status: 'OK', classification: 'Healthy' });
-      expect(result[1].classification).toEqual({ status: 'OK', classification: 'Needs Attention' });
+      expect(result[0].validation).toEqual({ status: 'OK', classification: 'Healthy' });
+      expect(result[1].validation).toEqual({ status: 'OK', classification: 'Needs Attention' });
     });
   });
 
@@ -79,7 +79,7 @@ describe('monitorLocalService', () => {
         {
           id: 'unit1',
           pods: [],
-          classification: undefined,
+          validation: undefined,
           readings: [
             {
               id: 'r1',

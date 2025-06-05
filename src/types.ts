@@ -3,7 +3,7 @@ export type Unit = {
     id: string
     pods: Pod[]
     readings: Reading[]
-    classification?:{ status: string; classification: string }
+    validation?:{ status: string; classification: string }
 }
 
 export type Pod = {

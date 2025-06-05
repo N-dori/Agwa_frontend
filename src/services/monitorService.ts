@@ -50,7 +50,7 @@ const createUnit = () => {
         id: utilService.makeId(12),
         readings:createReadings(),
         pods,
-        classification:undefined
+        validation:undefined
     }
 }
 

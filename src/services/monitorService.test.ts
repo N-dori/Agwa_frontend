@@ -27,9 +27,9 @@ describe('pyMonitorService', () => {
   describe('pyMonitorService.sendSensorData', () => {
   it('should post sensor data and return three classified units', async () => {
     const mockSensorData: Unit[] = [
-      { id: 'unit1', readings: [], pods: [], classification: undefined },
-      { id: 'unit2', readings: [], pods: [], classification: undefined },
-      { id: 'unit3', readings: [], pods: [], classification: undefined },
+      { id: 'unit1', readings: [], pods: [], validation: undefined },
+      { id: 'unit2', readings: [], pods: [], validation: undefined },
+      { id: 'unit3', readings: [], pods: [], validation: undefined },
     ]
 
     const mockResponse = [
@@ -37,19 +37,19 @@ describe('pyMonitorService', () => {
         id: '18aiKSi8VF7v',
         readings: Array(100).fill({ id: 'r', pH: 6, temp: 22, ec: 2, timestamp: new Date().toISOString() }),
         pods: Array(20).fill({ id: 'p', age: 10 }),
-        classification: { status: 'OK', classification: 'Healthy' },
+        validation: { status: 'OK', classification: 'Healthy' },
       },
       {
         id: '9HJquzNe9Ug3',
         readings: Array(100).fill({ id: 'r', pH: 8, temp: 25, ec: 3, timestamp: new Date().toISOString() }),
         pods: Array(20).fill({ id: 'p', age: 20 }),
-        classification: { status: 'OK', classification: 'Needs Attention' },
+        validation: { status: 'OK', classification: 'Needs Attention' },
       },
       {
         id: 'fZvzWaFIseBn',
         readings: Array(100).fill({ id: 'r', pH: 5.5, temp: 24, ec: 2.5, timestamp: new Date().toISOString() }),
         pods: Array(20).fill({ id: 'p', age: 15 }),
-        classification: { status: 'OK', classification: 'Healthy' },
+        validation: { status: 'OK', classification: 'Healthy' },
       },
     ];
 
@@ -67,7 +67,7 @@ describe('pyMonitorService', () => {
       expect(Array.isArray(unit.pods)).toBe(true);
       expect(unit.pods.length).toBe(20);
       expect(unit).toHaveProperty('classification');
-      expect(unit.classification).toEqual(
+      expect(unit.validation).toEqual(
         expect.objectContaining({
           status: 'OK',
           classification: expect.stringMatching(/Healthy|Needs Attention/),

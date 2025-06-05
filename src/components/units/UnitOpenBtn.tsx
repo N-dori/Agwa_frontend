@@ -1,6 +1,5 @@
 import React from 'react'
 import type { Unit } from '../../types'
-import { classificationsTypes } from '../../utils/monitor'
 
 type UnitOpenBtnProps = {
     unit: Unit

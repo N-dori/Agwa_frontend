@@ -9,17 +9,17 @@ const mockUnit = {
   id: 'u1',
   pods: [],
   readings: [],
-  classification: { status: '', classification: '' }
+  validation: { status: '', classification: '' }
 }
 
 const healthyUnit = {
      ...mockUnit,
-     classification: { status: '', classification: classificationsTypes.HEALTHY }
+     validation: { status: '', classification: classificationsTypes.HEALTHY }
 }
 
 const unhealthyUnit = {
     ...mockUnit,
-    classification: { status: '', classification: classificationsTypes.NEEDS_ATTENTION }
+    validation: { status: '', classification: classificationsTypes.NEEDS_ATTENTION }
 }
 
 describe('UnitPreview', () => {

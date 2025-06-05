@@ -24,8 +24,8 @@ it('closes the modal when the button is clicked', async () => {
 })
 
 it('fetches units from the service and sets them', async () => {
-  const mockInitialUnits = [{ id: 'unit1', pods: [], readings: [], classification: undefined }];
-  const mockClassifiedUnits = [{ id: 'unit1', pods: [], readings: [], classification: { status: "OK" ,classification: 'Healthy' } }];
+  const mockInitialUnits = [{ id: 'unit1', pods: [], readings: [], validation: undefined }];
+  const mockClassifiedUnits = [{ id: 'unit1', pods: [], readings: [], validation: { status: "OK" ,classification: 'Healthy' } }];
   mockedGetInitialSensorData.mockReturnValue(mockInitialUnits)
   mockedSendSensorData.mockResolvedValue(mockClassifiedUnits)
 

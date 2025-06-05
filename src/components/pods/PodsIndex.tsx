@@ -12,7 +12,7 @@ type PodsIndexProps = {
   status: {status:string , classification:string } | undefined
 }
 
-export const PodsIndex = ({pods, unitId, onInspectUnit,status}: PodsIndexProps) => {
+export const PodsIndex = ({pods, unitId, onInspectUnit, status}: PodsIndexProps) => {
 const isHealthy = status?.classification === classificationsTypes.HEALTHY
   return (
     <section className="pods-container flex-col" >

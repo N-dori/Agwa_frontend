@@ -100,7 +100,7 @@ const sendSensorData = async (units:Unit[]) :Promise<Unit[]> => {
         { status: 'OK', classification: 'Healthy' }
         :
         { status: 'OK', classification: 'Needs Attention' }
-        unit.classification = classifiedResult
+        unit.validation = classifiedResult
     })
     return units
 }
