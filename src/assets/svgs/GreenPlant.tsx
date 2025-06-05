@@ -1,14 +1,16 @@
 import React from 'react'
 
-type Props = {}
+type GreenPlantProps = {
+  size : number
+}
 
-export const GreenPlant = ({}: Props) => {
+export const GreenPlant = ({ size } : GreenPlantProps) => {
   return (
       <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 256 256"
-    width="50"
-    height="50"
+    width={`${size}`}
+    height={`${size}`}
   >
     <g
       transform="translate(1.4066 1.4066) scale(2.81 2.91)"

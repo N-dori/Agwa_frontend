@@ -71,7 +71,7 @@ const modalProps = {
   return (
     <section className="monitor-container grid">
       <h1 className="monitor-title center">~HydroSense Monitor~</h1>
-      <h2 className="monitor-subtitle center">Healthy Plants, Happy Growers<GreenPlant/></h2>
+      <h2 className="monitor-subtitle center">Healthy Plants, Happy Growers<GreenPlant size={50}/></h2>
       <h3 className="monitor-subtitle center">60 plants per cabin — inspect any tray to check their status</h3>
 
       <section className="units-container flex-col flex-jc"> 

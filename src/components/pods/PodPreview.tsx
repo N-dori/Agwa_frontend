@@ -4,6 +4,7 @@ import { GreenLeafs } from '../../assets/svgs/GreenLeafs'
 import { HealthySvg } from '../../assets/svgs/HealthySvg'
 import { AttentionSvg } from '../../assets/svgs/AttentionSvg'
 import { ProgressCircleSvg } from '../../assets/svgs/ProgressCircleSvg'
+import { GreenPlant } from '../../assets/svgs/GreenPlant'
 
 type Props = {
     pod: Pod
@@ -13,7 +14,7 @@ type Props = {
 export const PodPreview = ({pod}: Props) => {
 const PodTooltip = () => {
     return  <div className="pod-tooltip">
-                <p className="pod-age">{` ${pod.age}% grown`}</p> 
+                <p className="pod-age"><GreenPlant size={30}/>{` ${pod.age}% grown`}</p> 
             </div>
 } 
 const percent = Math.max(0, Math.min(100, pod.age));
